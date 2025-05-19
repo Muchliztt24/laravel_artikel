@@ -9,12 +9,13 @@
 
                     <div class="card-body">
 
-                        <form action="{{ route('anime.update',$anime->id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('anime.update', $anime->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="form-group mb-5 mt-3">
                                 <label>Judul Artikel</label>
-                                <input type="text" class="form-control" name="judul" value="{{$anime->judul}}" required>
+                                <input type="text" class="form-control" name="judul" value="{{ $anime->judul }}"
+                                    required>
                             </div>
                             <div class="form-group mb-5 mt-5">
                                 <label>Jenis Artikel</label>
@@ -26,9 +27,11 @@
                             </div>
                             <div class="form-group mb-5 mt-3">
                                 <label class="mb-2">Foto </label>
-                            <img src="{{ asset('storage/anim/'.$anime->foto) }}" alt="" style="width: 210px; height: 110px;" class="form-control">
-                            <input type="file" class="form-control mt-5 mb-5 @error('foto') is-invalid @enderror" name="foto" id="" value="{{$anime->foto}}">
-                            {{-- @if($buku->photo)
+                                <img src="{{ asset('storage/anim/' . $anime->foto) }}" alt=""
+                                    style="width: 210px; height: 110px;" class="form-control">
+                                <input type="file" class="form-control mt-5 mb-5 @error('foto') is-invalid @enderror"
+                                    name="foto" id="" value="{{ $anime->foto }}">
+                                {{-- @if ($buku->photo)
                                 <div class="mb-2">
                                     <img src="{{ Storage::url('buku/' . $buku->photo)}}" alt="Foto Buku" 
                                     class="img-thumbnail" width="150">
@@ -41,11 +44,20 @@
                             </div>
                             <div class="form-group mb-5 mt-3">
                                 <label>Deskripsi Artikel</label>
-                                <textarea class="form-control" name="desk" id="" cols="30" rows="15">{{$anime->desk}}</textarea>
+                                <textarea class="form-control" name="desk" id="editor" cols="30" rows="15">{{ $anime->desk ?? '' }}</textarea>
                             </div>
+                            <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+                            <script>
+                                ClassicEditor
+                                    .create(document.querySelector('#editor'))
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
+                            </script>
                             <div class="form-group mb-5 mt-3">
                                 <label>Penulis Artikel</label>
-                                <input type="text" class="form-control" name="penulis" value="{{$anime->penulis}}" required>
+                                <input type="text" class="form-control" name="penulis" value="{{ $anime->penulis }}"
+                                    required>
                             </div>
                             <r>
                                 <button type="submit" class="btn btn-success mb-3 mt-2">Simpan</button>

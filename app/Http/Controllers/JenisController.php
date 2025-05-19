@@ -5,7 +5,6 @@ use App\Models\Jenis;
 use Illuminate\Http\Request;
 use Storage;
 
-
 class JenisController extends Controller
 {
     /**
@@ -17,7 +16,6 @@ class JenisController extends Controller
     {
         $jenis = Jenis::all();
         return view('jenis.index', compact('jenis'));
-
     }
 
     /**
@@ -38,7 +36,14 @@ class JenisController extends Controller
      */
     public function store(Request $request)
     {
-        $jenis        = new Jenis;
+        $request->validate(
+            [
+                'jenis' => 'required|string|unique:jenis,jenis',
+            ],
+            ['jenis.unique' => 'Jenis ini sudah ada, silakan masukkan yang lain.'],
+        );
+
+        $jenis = new Jenis();
         $jenis->jenis = $request->jenis;
         $jenis->save();
 
@@ -46,7 +51,7 @@ class JenisController extends Controller
 
         return redirect()->route('jenis.index');
     }
-//|unique:bukusx
+    //|unique:bukusx
     /**
      * Display the specified resource.
      *
@@ -80,7 +85,15 @@ class JenisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $jenis        = Jenis::findOrfail($id);
+        $request->validate(
+            [
+                'jenis' => 'required|string|unique:jenis,jenis,' . $id,
+            ],
+
+            ['jenis.unique' => 'Jenis ini sudah ada, silakan masukkan yang lain.'],
+        );
+
+        $jenis = Jenis::findOrfail($id);
         $jenis->jenis = $request->jenis;
         $jenis->save();
 
@@ -99,6 +112,8 @@ class JenisController extends Controller
     {
         $jenis = Jenis::findOrfail($id);
         $jenis->delete();
-        return redirect()->route('jenis.index')->with('success', 'Data Berhasil Dihapus!');
+        session()->flash('success', 'Data berhasil ditambahkan');
+
+        return redirect()->route('jenis.index');
     }
 }

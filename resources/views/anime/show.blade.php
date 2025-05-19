@@ -30,19 +30,22 @@
                             </div>
                             <div class="form-group mb-5 mt-3">
                                 <label>Deskripsi Artikel</label>
-                                <textarea name="desk" class="form-control mt-2 mb-3"  cols="40" rows="30" readonly>{{ $anime->desk }}"</textarea>
+                                <p>{!! $anime->desk ?? '' !!}</p>
                             </div>
-                            <div class="form-group mb-5 mt-3">
-                                <label>Penulis Artikel</label>
-                                <input type="text" class="form-control" name="penulis" value="{{ $anime->penulis }}"
-                                    disabled>
-                            </div>
-                            <r>
-                                <a href="{{route('anime.index')}}" style="background-color: #b89017; color: white; padding: 5px 10px; border-radius: 4px; font-size: 13px; text-decoration: none;" class="btn btn-warning">Kembali Ke Beranda</a>
-                        </form>
+                            
                     </div>
+                    <div class="form-group mb-5 mt-3">
+                        <label>Penulis Artikel</label>
+                        <input type="text" class="form-control mt-2 mb-3" name="penulis" value="{{ $anime->penulis }}" readonly>
+                    </div>
+                    <r>
+                        <a href="{{ route('anime.index') }}"
+                            style="background-color: #b89017; color: white; padding: 5px 10px; border-radius: 4px; font-size: 13px; text-decoration: none;"
+                            class="btn btn-warning">Kembali Ke Beranda</a>
+                        </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

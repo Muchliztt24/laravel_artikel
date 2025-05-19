@@ -44,6 +44,12 @@
    @include('layouts.component_user.header')
     <!-- Header End -->
 
+    <!--Content-->
+    <div class="content">
+       @yield('content')
+    </div>
+    <!--End Content-->
+
     <!-- Footer Start -->
     @include('layouts.component_user.footer')
     <!-- Footer End -->

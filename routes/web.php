@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\JenisController;
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[FrontController::class,'index']);
 
 Auth::routes();
 
@@ -28,3 +31,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('jenis', JenisController::class);
 Route::resource('anime', AnimeController::class);
+

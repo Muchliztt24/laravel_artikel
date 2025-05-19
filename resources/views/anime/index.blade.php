@@ -20,31 +20,31 @@
                     <table style="width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px;">
                         <thead>
                             <tr style="background-color: #f0f0f0;">
-                                <th style="border: 1px solid #ccc; padding: 10px;">No</th>
-                                <th style="border: 1px solid #ccc; padding: 10px;">Judul</th>
-                                <th style="border: 1px solid #ccc; padding: 10px;">Jenis</th>
-                                <th style="border: 1px solid #ccc; padding: 10px;">Foto</th>
-                                <th style="border: 1px solid #ccc; padding: 10px;">Deskripsi Artikel</th>
-                                <th style="border: 1px solid #ccc; padding: 10px;">Penulis Artikel</th>
-                                <th style="border: 1px solid #ccc; padding: 10px;">Aksi</th>
+                                <th>No</th>
+                                <th>Judul</th>
+                                <th>Jenis</th>
+                                <th>Foto</th>
+                                <th>Deskripsi Artikel</th>
+                                <th>Penulis Artikel</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php $no = 1; @endphp
                             @foreach ($anime as $data)
                                 <tr>
-                                    <td style="border: 1px solid #ccc; padding: 10px;">{{ $no++ }}</td>
-                                    <td style="border: 1px solid #ccc; padding: 10px;">{{ $data->judul }}</td>
-                                    <td style="border: 1px solid #ccc; padding: 10px;">{{ $data->jenis->jenis }}</td>
-                                    <td style="border: 1px solid #ccc; padding: 10px;">
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $data->judul }}</td>
+                                    <td>{{ $data->jenis->jenis }}</td>
+                                    <td>
                                         <img src="{{ asset('storage/anim/' . $data->foto) }}" alt="Foto"
                                             style="width: 200px; height: 110px; object-fit: cover;">
                                     </td>
-                                    <td style="border: 1px solid #ccc; padding: 10px;" title="{{ $data->desk }}">
-                                        {{ \Illuminate\Support\Str::limit($data->desk, 50) }}
+                                    <td title="{{ $data->desk }}">
+                                        {!! \Illuminate\Support\Str::limit($data->desk, 20) !!}
                                     </td>
-                                    <td style="border: 1px solid #ccc; padding: 10px;">{{ $data->penulis }}</td>
-                                    <td style="border: 1px solid #ccc; padding: 10px;">
+                                    <td>{{ $data->penulis }}</td>
+                                    <td>
                                         <div style="display: flex; gap: 6px;">
                                             <a href="{{ route('anime.edit', $data->id) }}"
                                                 style="background-color: #28a745; color: white; padding: 5px 10px; border-radius: 4px; font-size: 13px; text-decoration: none;">Rubah</a>
