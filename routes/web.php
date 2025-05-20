@@ -22,6 +22,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[FrontController::class,'index']);
 
+Route::get('/daftar', [FrontController::class, 'daftar'])->name('page.daftar');
+
+Route::get('/jenis/{id}', [FrontController::class, 'sortir'])->name('page.sortir');
+
+Route::get('/anime/{id}', [FrontController::class, 'single'])->name('page.single');
+
 Auth::routes();
 
 Route::get('/dashboard', function () {

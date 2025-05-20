@@ -9,8 +9,9 @@
                         style="width: 150px; height: 150px;">
                     <h3 class="my-4">{{$data->judul}}</h3>
                     <p class="text-light">{!! \Illuminate\Support\Str::limit($data->desk, 80) !!}</p>
-                    <a class="font-body" style="letter-spacing: 1px;" href="">Read More <i
-                            class="bi bi-arrow-right"></i></a>
+                    <a class="font-body" style="letter-spacing: 1px;" href="{{ route('page.single', $data->id) }}">
+                        Baca Selengkapnya... <i class="bi bi-arrow-right"></i>
+                    </a>                    
                 </div>
             </div>
             @endforeach
