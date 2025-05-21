@@ -29,6 +29,10 @@
                  <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                      <div class="navbar-nav mr-auto py-0">
                          <a href="/" class="nav-item nav-link active">Home</a>
+                         @if(Auth::user()->is_admin === 1)
+                         <a href="admin/jenis" class="nav-item nav-link active">Jenis</a>
+                         <a href="admin/anime" class="nav-item nav-link active">Anime</a>
+                         @endif
                          @foreach ($jenis as $data)
                              <a href="{{ route('page.sortir', $data->id) }}"
                                  class="nav-item nav-link">{{ $data->jenis }}</a>

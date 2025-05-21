@@ -7,6 +7,7 @@
                 <h5 class="mb-0">Data Anime</h5>
                 <a href="{{ route('anime.create') }}" class="btn btn-outline-primary" style="float: left">Tambah Data</a>
             </div>
+            
 
             <div class="card-body">
                 @if (session('success'))
