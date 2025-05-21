@@ -20,7 +20,7 @@
              </div>
              <nav class="navbar navbar-expand-lg navbar-dark p-3 p-lg-0 px-lg-5" style="background: #111111;">
                  <a href="index.html" class="navbar-brand d-block d-lg-none">
-                     <h1 class="m-0 display-4 text-primary text-uppercase">Chefer</h1>
+                     <h1 class="m-0 display-4 text-primary text-uppercase">Animeku</h1>
                  </a>
                  <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
                      data-bs-target="#navbarCollapse">
@@ -28,11 +28,12 @@
                  </button>
                  <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                      <div class="navbar-nav mr-auto py-0">
-                         <a href="#" class="nav-item nav-link active">Home</a>
+                         <a href="/" class="nav-item nav-link active">Home</a>
                          @foreach ($jenis as $data)
                              <a href="{{ route('page.sortir', $data->id) }}"
                                  class="nav-item nav-link">{{ $data->jenis }}</a>
                          @endforeach
+                         </form>
                      </div>
                  </div>
              </nav>

@@ -9,7 +9,8 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $anime = Anime::all();
+        $anime = Anime::orderBy('id', 'desc')->get();
+
         $jenis = Jenis::all();
         return view('welcome', compact('anime', 'jenis'));
     }

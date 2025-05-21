@@ -11,7 +11,7 @@ class AnimeController extends Controller
 {
     public function index()
     {
-        $anime = Anime::all();
+        $anime = Anime::orderBy('id','desc')->get();
         return view('anime.index', compact('anime'));
     }
 

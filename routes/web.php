@@ -22,19 +22,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[FrontController::class,'index']);
 
+Auth::routes();
+
 Route::get('/daftar', [FrontController::class, 'daftar'])->name('page.daftar');
 
 Route::get('/jenis/{id}', [FrontController::class, 'sortir'])->name('page.sortir');
 
 Route::get('/anime/{id}', [FrontController::class, 'single'])->name('page.single');
 
-Auth::routes();
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('jenis', JenisController::class);
-Route::resource('anime', AnimeController::class);
+route::prefix('admin')->middleware('auth')->group(function () {
+    
+    Route::resource('jenis', JenisController::class);
+    Route::resource('anime', AnimeController::class);
+});
+
+
+
 
